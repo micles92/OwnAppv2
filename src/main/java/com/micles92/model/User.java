@@ -4,11 +4,19 @@ package com.micles92.model;
  * Created by lesiulol on 20.01.16.
  */
 public class User {
+    private int id;
     private String email;
     private String login;
     private String password;
 
     public User(String email, String login, String password) {
+        this.email = email;
+        this.login = login;
+        this.password = password;
+    }
+
+    public User(int id, String email, String login, String password) {
+        this.id = id;
         this.email = email;
         this.login = login;
         this.password = password;
@@ -36,6 +44,14 @@ public class User {
 
     public void setPassword(String password) {
         this.password = password;
+    }
+
+    public int getId() {
+        return id;
+    }
+
+    public void setId(int id) {
+        this.id = id;
     }
 
     @Override

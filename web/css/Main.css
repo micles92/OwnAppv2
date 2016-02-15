@@ -1,0 +1,32 @@
+h1{
+    color: #ff4260;
+    display: block;
+    margin: 5px;
+    padding: 5px;
+
+}
+
+body{
+    background-color: #d0e4fe;
+}
+
+div{
+    border-style: solid;
+    border-width: 5px;
+    background-color: hsl(232, 100%, 59%);
+
+}
+
+
+
+table, th, td {
+    padding: 5px;
+    text-align: left;
+    border: 1px solid black;
+
+    width: 100%;
+
+    table-layout: fixed; /* optional, for equal spacing */
+    border-collapse: collapse;
+}
+table { table-layout: fixed; }
