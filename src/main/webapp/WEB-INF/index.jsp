@@ -12,6 +12,8 @@
     <a href="/users" >Lista Uzytkownikow</a>
 <br>
     <a href="/books">Lista Ksiazek</a>
+<br>
+    <a href="/rents">Lista Wypozyczen</a>
 
 <c:if test="${loggeduser != null}" >
     <a href="${logoutULR}">Logout</a>

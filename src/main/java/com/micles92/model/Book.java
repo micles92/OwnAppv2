@@ -22,6 +22,14 @@ public class Book {
         this.year = year;
     }
 
+    public Book(int id) {
+        this.id = id;
+    }
+
+
+
+
+
     public int getId() {
         return id;
     }

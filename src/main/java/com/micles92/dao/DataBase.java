@@ -1,5 +1,8 @@
 package com.micles92.dao;
 
+import org.springframework.stereotype.Component;
+import org.springframework.stereotype.Repository;
+
 import java.sql.Connection;
 import java.sql.DriverManager;
 import java.sql.SQLException;
@@ -7,6 +10,7 @@ import java.sql.SQLException;
 /**
  * Created by lesiulol on 25.01.16.
  */
+@Component
 public class DataBase {
 
     private Connection connection;

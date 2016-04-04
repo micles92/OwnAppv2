@@ -7,7 +7,9 @@
   To change this template use File | Settings | File Templates.
 --%>
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
-<c:url value="/create-user" var="createUserURL" ></c:url>
+<c:url value="/create-user" var="createUserURL" />
+<c:url value="/edit-user" var="editUserURL"/>
+<c:url value="/delete-user" var="deleteUserURL"/>
 <html>
 <head>
     <title>Lista uzytkownikow</title>
@@ -20,18 +22,25 @@
         <th>Id</th>
         <th>Login</th>
         <th>E-mail</th>
+        <th>Action</th>
     </tr>
 </table>
-<c:forEach items="${users}" var="user">
-    <table border="3" cellpadding="5" valign="bottom">
 
+    <table border="3" cellpadding="5" valign="bottom">
+        <c:forEach items="${users}" var="user">
         <tr>
             <td align="center" valign="bottom">${user.id}</td>
             <td align="center" valign="bottom">${user.login} </td>
             <td align="center" valign="bottom"> ${user.email} </td>
+            <td align="center" valign="bottom">
+                <a href= "${editUserURL}/${user.id}">Edit</a>
+                <br>
+                <a href="${deleteUserURL}/${user.id}">Delete</a>
+            </td>
         </tr>
+        </c:forEach>
     </table>
-</c:forEach>
+
 
 <a href="${createUserURL}">Create User</a>
 
