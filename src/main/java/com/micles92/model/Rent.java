@@ -1,14 +1,20 @@
 package com.micles92.model;
 
+import javax.persistence.Column;
+import javax.persistence.Entity;
+import javax.persistence.Table;
+
 /**
  * Created by lesiulol on 29.02.16.
  */
+@Entity
+@Table
 public class Rent {
     private  Book book;
     private  User user;
-    private Integer id;
+    private Long id;
 
-    public Rent(Book book, User user, Integer id) {
+    public Rent(Book book, User user, Long id) {
         this.book = book;
         this.user = user;
         this.id = id;
@@ -35,11 +41,11 @@ public class Rent {
         this.user = user;
     }
 
-    public Integer getId() {
+    public Long getId() {
         return id;
     }
 
-    public void setId(Integer id) {
+    public void setId(Long id) {
         this.id = id;
     }
 

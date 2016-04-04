@@ -1,12 +1,22 @@
 package com.micles92.model;
 
+import javax.persistence.*;
+
 /**
  * Created by lesiulol on 20.01.16.
  */
+@Entity
+@Table(name = "USER")
 public class User {
-    private int id;
+    @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    @Column(name = "ID")
+    private Long id;
+    @Column(name = "EMAIL")
     private String email;
+    @Column(name = "LOGIN")
     private String login;
+    @Column(name = "PASSWORD")
     private String password;
 
     public User(String email, String login, String password) {
@@ -15,14 +25,14 @@ public class User {
         this.password = password;
     }
 
-    public User(int id, String email, String login, String password) {
+    public User(Long id, String email, String login, String password) {
         this.id = id;
         this.email = email;
         this.login = login;
         this.password = password;
     }
 
-    public User(int id) {
+    public User(Long id) {
         this.id = id;
     }
 
@@ -53,11 +63,11 @@ public class User {
         this.password = password;
     }
 
-    public int getId() {
+    public Long getId() {
         return id;
     }
 
-    public void setId(int id) {
+    public void setId(Long id) {
         this.id = id;
     }
 

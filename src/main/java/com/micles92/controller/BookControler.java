@@ -2,7 +2,6 @@ package com.micles92.controller;
 
 import com.micles92.dao.BookDao;
 import com.micles92.model.Book;
-import com.micles92.model.User;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -15,7 +14,6 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 import java.sql.SQLException;
-import java.util.ArrayList;
 import java.util.List;
 
 /**
@@ -28,7 +26,7 @@ public class BookControler {
 
     @RequestMapping(value = "/books", method = RequestMethod.GET)
     public String listBooks(Model model) throws SQLException {
-        List<Book> books = bookDao.getAll();
+        List<Book> books = bookDao.findAll();
         books.add(new Book(666, "Spring", "Bean"));
         model.addAttribute("books",books);
         return "book-list";
@@ -58,8 +56,8 @@ public class BookControler {
     }
 
     @RequestMapping(value = "/edit-book/{id}", method = RequestMethod.GET)
-    public String getEditBookView(Model model, @PathVariable("id") Integer id) throws SQLException {
-        Book book = bookDao.findById(id);
+    public String getEditBookView(Model model, @PathVariable("id") Long id) throws SQLException {
+        Book book = bookDao.findOne(id);
 
         model.addAttribute("book",book);
         return "edit-book";
@@ -68,22 +66,22 @@ public class BookControler {
 
     @RequestMapping(value = "/edit-book", method = RequestMethod.POST)
     public String editBook(
-            @RequestParam(value = "id", required = true) Integer id,
+            @RequestParam(value = "id", required = true) Long id,
             @RequestParam(value = "autor", required = true) String autor,
             @RequestParam(value = "title", required = true) String title,
             @RequestParam(value = "year", required = true) Integer year
     ) throws SQLException {
         Book book = new Book(id,autor,title,year);
 
-        bookDao.update(book);
+        bookDao.save(book);
 
 
         return "redirect:/books";
     }
 
     @RequestMapping(value = "/delete-book/{id}", method = RequestMethod.GET)
-    public String deleteBook(@PathVariable("id") Integer id) throws SQLException {
-        bookDao.deleteBookById(id);
+    public String deleteBook(@PathVariable("id") Long id) throws SQLException {
+        bookDao.delete(id);
         return "redirect:/books";
     }
 

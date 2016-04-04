@@ -32,7 +32,7 @@ public class RentController {
 
     @RequestMapping(value = "/rents", method = RequestMethod.GET)
     public String listRents(Model model) throws SQLException {
-        List<Rent> rents = rentDao.getAll();
+        List<Rent> rents = rentDao.findAll();
 
         model.addAttribute("rents", rents);
         return "rent-list";
@@ -40,8 +40,8 @@ public class RentController {
 
     @RequestMapping(value = "/add-rent", method = RequestMethod.GET)
     public String getCreateRentView(Model model) throws SQLException {
-       List<User> users = userDao.getAll();
-       List<Book> books = bookDao.getAll();
+       List<User> users = userDao.findAll();
+       List<Book> books = bookDao.findAll();
         model.addAttribute("users", users);
         model.addAttribute("books", books);
 
@@ -50,8 +50,8 @@ public class RentController {
 
     @RequestMapping(value = "/add-rent", method = RequestMethod.POST)
     public String createRent(
-            @RequestParam(value = "userId", required = true) Integer userId,
-            @RequestParam(value = "bookId", required = true) Integer bookId
+            @RequestParam(value = "userId", required = true) Long userId,
+            @RequestParam(value = "bookId", required = true) Long bookId
     ) throws SQLException {
 
         Book book =new Book(bookId);
@@ -65,8 +65,8 @@ public class RentController {
     }
 
     @RequestMapping(value = "/delete-rent/{id}", method = RequestMethod.GET)
-    public String deleteRentById(@PathVariable("id") Integer id) throws SQLException {
-        rentDao.deleteRentById(id);
+    public String deleteRentById(@PathVariable("id") Long id) throws SQLException {
+        rentDao.delete(id);
         return  "redirect:/rents";
     }
 }

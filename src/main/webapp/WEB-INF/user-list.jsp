@@ -13,36 +13,49 @@
 <html>
 <head>
     <title>Lista uzytkownikow</title>
-    <link rel="stylesheet" type="text/css" href="../css/Main.css">
+    <%--<link rel="stylesheet" type="text/css" href="../css/Main.css">--%>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.5.0/css/font-awesome.min.css">
+
+    <!-- Latest compiled and minified CSS -->
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css" integrity="sha384-1q8mTJOASx8j1Au+a5WDVnPi2lkFfwwEAa8hDDdjZlpLegxhjVME1fgjWPGmkzs7" crossorigin="anonymous">
+
+    <!-- Optional theme -->
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap-theme.min.css" integrity="sha384-fLW2N01lMqjakBkx3l/M9EahuwpSfeNvV63J5ezn3uZzapT0u7EYsXMjQV+0En5r" crossorigin="anonymous">
+
+    <!-- Latest compiled and minified JavaScript -->
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js" integrity="sha384-0mSbJDEHialfmuBBQP6A4Qrprq5OVfW37PRR3j5ELqxss1yVqOtnepnHVP9aJ7xS" crossorigin="anonymous"></script>
+
 </head>
 <body>
 <div><h1>Lista uzytkownikow</h1></div>
-<table border="3" cellpadding="5">
+<table class="table table-bordered table-striped table-hover">
+    <thead>
     <tr>
         <th>Id</th>
         <th>Login</th>
         <th>E-mail</th>
         <th>Action</th>
     </tr>
-</table>
-
-    <table border="3" cellpadding="5" valign="bottom">
+    </thead>
+        <tbody>
         <c:forEach items="${users}" var="user">
         <tr>
-            <td align="center" valign="bottom">${user.id}</td>
-            <td align="center" valign="bottom">${user.login} </td>
-            <td align="center" valign="bottom"> ${user.email} </td>
-            <td align="center" valign="bottom">
+            <td>${user.id}</td>
+            <td>${user.login} </td>
+            <td> ${user.email} </td>
+            <td>
                 <a href= "${editUserURL}/${user.id}">Edit</a>
                 <br>
                 <a href="${deleteUserURL}/${user.id}">Delete</a>
             </td>
         </tr>
         </c:forEach>
+        </tbody>
     </table>
 
 
-<a href="${createUserURL}">Create User</a>
+<a href="${createUserURL}" class="btn btn-primary">Create User</a>
+<i class="fa fa-stop-circle-o"></i>
 
 
 </body>

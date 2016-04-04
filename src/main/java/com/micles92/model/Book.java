@@ -1,12 +1,22 @@
 package com.micles92.model;
 
+import javax.persistence.*;
+
 /**
  * Created by lesiulol on 28.01.16.
  */
+@Entity
+@Table(name = "BOOK")
 public class Book {
-    private int id;
+    @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    @Column(name = "ID")
+    private Long id;
+    @Column(name = "AUTOR")
     private String autor;
+    @Column(name = "TITLE")
     private String title;
+    @Column(name = "YEAR")
     private int year;
 
     public Book(int year, String title, String autor) {
@@ -15,14 +25,14 @@ public class Book {
         this.autor = autor;
     }
 
-    public Book(int id, String autor, String title, int year) {
+    public Book(Long id, String autor, String title, int year) {
         this.id = id;
         this.autor = autor;
         this.title = title;
         this.year = year;
     }
 
-    public Book(int id) {
+    public Book(Long id) {
         this.id = id;
     }
 
@@ -30,11 +40,11 @@ public class Book {
 
 
 
-    public int getId() {
+    public Long getId() {
         return id;
     }
 
-    public void setId(int id) {
+    public void setId(Long id) {
         this.id = id;
     }
 

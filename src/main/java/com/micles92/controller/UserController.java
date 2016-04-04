@@ -14,7 +14,6 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 import java.sql.SQLException;
-import java.util.ArrayList;
 import java.util.List;
 
 /**
@@ -27,7 +26,8 @@ public class UserController {
 
     @RequestMapping(value = "/users", method = RequestMethod.GET)
     public String listUsers(Model model) throws SQLException {
-        List<User>users = userDao.getAll();
+        List<User>users = userDao.findAll();
+
 
         model.addAttribute("users",users);
 
@@ -59,9 +59,9 @@ public class UserController {
     }
 
     @RequestMapping(value = "/edit-user/{id}", method = RequestMethod.GET)
-    public String getEditUserView(Model model, @PathVariable("id") Integer id) throws SQLException {
+    public String getEditUserView(Model model, @PathVariable("id") Long id) throws SQLException {
 
-        User user = userDao.findById(id);
+        User user = userDao.findOne(id);
         model.addAttribute("user",user);
 
 
@@ -72,19 +72,19 @@ public class UserController {
     public String editUer(
             @RequestParam(value = "login", required = true) String login,
             @RequestParam(value = "email", required = true) String email,
-            @RequestParam(value = "id", required = true) Integer id
+            @RequestParam(value = "id", required = true) Long id
     ) throws SQLException {
 
         User user = new User(id,email,login,null);
 
-        userDao.update(user);
+        userDao.save(user);
 
         return "redirect:/users";
     }
 
     @RequestMapping(value = "/delete-user/{id}", method = RequestMethod.GET)
-    public String deleteUser(@PathVariable("id") Integer id) throws SQLException {
-        userDao.deleteUserById(id);
+    public String deleteUser(@PathVariable("id") Long id) throws SQLException {
+        userDao.delete(id);
         return "redirect:/users";
     }
 
