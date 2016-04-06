@@ -1,18 +1,30 @@
 package com.micles92.model;
 
-import javax.persistence.Column;
-import javax.persistence.Entity;
-import javax.persistence.Table;
+import javax.persistence.*;
 
 /**
  * Created by lesiulol on 29.02.16.
  */
 @Entity
-@Table
+@Table(name = "RENT")
 public class Rent {
+
+    @ManyToOne(fetch = FetchType.LAZY)
+    @JoinColumn(name = "BOOK_ID", referencedColumnName = "ID", nullable = false)
     private  Book book;
+
+    @ManyToOne(fetch = FetchType.LAZY)
+    @JoinColumn(name = "USER_ID", referencedColumnName = "ID", nullable = false)
     private  User user;
+
+
+    @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    @Column(name = "ID")
     private Long id;
+
+    public Rent() {
+    }
 
     public Rent(Book book, User user, Long id) {
         this.book = book;
@@ -24,6 +36,7 @@ public class Rent {
         this.book = book;
         this.user = user;
     }
+
 
     public Book getBook() {
         return book;

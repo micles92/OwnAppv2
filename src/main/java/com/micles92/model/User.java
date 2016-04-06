@@ -1,6 +1,7 @@
 package com.micles92.model;
 
 import javax.persistence.*;
+import java.util.List;
 
 /**
  * Created by lesiulol on 20.01.16.
@@ -18,6 +19,9 @@ public class User {
     private String login;
     @Column(name = "PASSWORD")
     private String password;
+
+    @OneToMany(cascade = CascadeType.ALL, fetch = FetchType.LAZY, mappedBy = "user")
+    private List<Rent>rents;
 
     public User(String email, String login, String password) {
         this.email = email;

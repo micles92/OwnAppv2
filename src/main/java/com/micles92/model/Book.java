@@ -1,6 +1,7 @@
 package com.micles92.model;
 
 import javax.persistence.*;
+import java.util.List;
 
 /**
  * Created by lesiulol on 28.01.16.
@@ -18,6 +19,12 @@ public class Book {
     private String title;
     @Column(name = "YEAR")
     private int year;
+
+    @OneToMany(cascade = CascadeType.ALL, fetch = FetchType.LAZY, mappedBy = "book")
+    private List<Rent>rents;
+
+    public Book() {
+    }
 
     public Book(int year, String title, String autor) {
         this.year = year;
