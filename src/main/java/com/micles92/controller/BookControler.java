@@ -27,7 +27,6 @@ public class BookControler {
     @RequestMapping(value = "/books", method = RequestMethod.GET)
     public String listBooks(Model model) throws SQLException {
         List<Book> books = bookDao.findAll();
-        books.add(new Book(666, "Spring", "Bean"));
         model.addAttribute("books",books);
         return "book-list";
     }

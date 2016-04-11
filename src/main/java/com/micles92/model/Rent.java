@@ -9,11 +9,11 @@ import javax.persistence.*;
 @Table(name = "RENT")
 public class Rent {
 
-    @ManyToOne(fetch = FetchType.LAZY)
+    @ManyToOne(fetch = FetchType.EAGER)
     @JoinColumn(name = "BOOK_ID", referencedColumnName = "ID", nullable = false)
     private  Book book;
 
-    @ManyToOne(fetch = FetchType.LAZY)
+    @ManyToOne(fetch = FetchType.EAGER)
     @JoinColumn(name = "USER_ID", referencedColumnName = "ID", nullable = false)
     private  User user;
 

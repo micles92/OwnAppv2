@@ -29,7 +29,8 @@
 
 <div><h1>Lista Ksiazek</h1></div>
 
-<table border="3" cellpadding="5">
+<table class="table table-bordered table-striped table-hover">
+    <thead>
     <tr>
         <th>Id</th>
         <th>Autor</th>
@@ -37,8 +38,8 @@
         <th>Year</th>
         <th>Action</th>
     </tr>
-</table>
-<table border="3" cellpadding="5" valign="bottom">
+    </thead>
+<tbody>
 <c:forEach items="${books}" var="book">
 
 
@@ -55,8 +56,9 @@
         </tr>
 
 </c:forEach>
+</tbody>
     </table>
 
-<a href="${addBookURL}">Add Book</a>
+<a href="${addBookURL}" class="btn btn-primary">Add Book</a>
 </body>
 </html>
