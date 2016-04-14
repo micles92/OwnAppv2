@@ -1,7 +1,7 @@
 package com.micles92.controller;
 
-import com.micles92.dao.BookDao;
 import com.micles92.model.Book;
+import com.micles92.service.impl.BookService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -21,12 +21,13 @@ import java.util.List;
  */
 @Controller
 public class BookControler {
-    @Autowired
-    private BookDao bookDao;
 
+    @Autowired
+    private BookService bookService;
+    
     @RequestMapping(value = "/books", method = RequestMethod.GET)
     public String listBooks(Model model) throws SQLException {
-        List<Book> books = bookDao.findAll();
+        List<Book> books = bookService.findAll();
         model.addAttribute("books",books);
         return "book-list";
     }
@@ -50,13 +51,13 @@ public class BookControler {
 
          Book book = new Book(year,title,autor);
 
-    bookDao.save(book);
+    bookService.save(book);
         return "redirect:/books";
     }
 
     @RequestMapping(value = "/edit-book/{id}", method = RequestMethod.GET)
     public String getEditBookView(Model model, @PathVariable("id") Long id) throws SQLException {
-        Book book = bookDao.findOne(id);
+        Book book = bookService.findOne(id);
 
         model.addAttribute("book",book);
         return "edit-book";
@@ -72,7 +73,7 @@ public class BookControler {
     ) throws SQLException {
         Book book = new Book(id,autor,title,year);
 
-        bookDao.save(book);
+        bookService.save(book);
 
 
         return "redirect:/books";
@@ -80,7 +81,7 @@ public class BookControler {
 
     @RequestMapping(value = "/delete-book/{id}", method = RequestMethod.GET)
     public String deleteBook(@PathVariable("id") Long id) throws SQLException {
-        bookDao.delete(id);
+        bookService.delete(id);
         return "redirect:/books";
     }
 
