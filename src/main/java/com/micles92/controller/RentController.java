@@ -6,6 +6,9 @@ import com.micles92.dao.UserDao;
 import com.micles92.model.Book;
 import com.micles92.model.Rent;
 import com.micles92.model.User;
+import com.micles92.service.UserService;
+import com.micles92.service.impl.BookService;
+import com.micles92.service.impl.RentService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -24,15 +27,15 @@ import java.util.List;
 public class RentController {
 
     @Autowired
-    private RentDao rentDao;
+    private RentService rentService;
     @Autowired
-    private BookDao bookDao;
+    private BookService bookService;
     @Autowired
-    private UserDao userDao;
+    private UserService userService;
 
     @RequestMapping(value = "/rents", method = RequestMethod.GET)
     public String listRents(Model model) throws SQLException {
-        List<Rent> rents = rentDao.findAll();
+        List<Rent> rents = rentService.findAll();
 
         model.addAttribute("rents", rents);
         return "rent-list";
@@ -40,8 +43,8 @@ public class RentController {
 
     @RequestMapping(value = "/add-rent", method = RequestMethod.GET)
     public String getCreateRentView(Model model) throws SQLException {
-       List<User> users = userDao.findAll();
-       List<Book> books = bookDao.findAll();
+       List<User> users = userService.findAll();
+       List<Book> books = bookService.findAll();
         model.addAttribute("users", users);
         model.addAttribute("books", books);
 
@@ -59,14 +62,14 @@ public class RentController {
 
         Rent rent = new Rent(book,user);
 
-        rentDao.save(rent);
+        rentService.save(rent);
 
         return "redirect:/rents";
     }
 
     @RequestMapping(value = "/delete-rent/{id}", method = RequestMethod.GET)
     public String deleteRentById(@PathVariable("id") Long id) throws SQLException {
-        rentDao.delete(id);
+        rentService.delete(id);
         return  "redirect:/rents";
     }
 }
