@@ -5,6 +5,7 @@
 <html>
 <head>
     <link rel="stylesheet" type="text/css" href="../css/Main.css">
+    <link rel="stylesheet" type="text/css" href="/home/lesiulol/Pulpitchartist.min.css">
     <title>MyApp</title>
 </head>
 <body>
@@ -32,6 +33,29 @@
 
 </c:otherwise>
 </c:choose>
+
+<script src="/home/lesiulol/Pulpit/chartist.min.js">
+
+    var data = {
+        labels: ['Mon', 'Tue', 'Wed', 'Thu', 'Fri'], series: [
+            [5, 2, 4, 2, 0]
+        ]
+    };
+
+    var options = {
+        width: 300,
+        height: 200
+    };
+
+
+    new Chartist.Line('.ct-chart', data);
+</script>
+
+
+
+
+<div class="ct-chart ct-perfect-fourth"></div>
+
 
 <%--<c:if  test="${loggeduser == null}">--%>
     <%--<form action="${loginURL}" method="post">--%>

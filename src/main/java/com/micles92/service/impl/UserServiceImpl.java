@@ -4,6 +4,7 @@ import com.micles92.dao.UserDao;
 import com.micles92.model.User;
 import com.micles92.service.UserService;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
@@ -34,5 +35,9 @@ public class UserServiceImpl implements UserService {
 
     public void delete(Long id) {
         userDao.delete(id);
+    }
+
+    public User findByLogin(String login) {
+        return userDao.findByLogin(login);
     }
 }

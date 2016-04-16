@@ -1,6 +1,7 @@
 package com.micles92.service;
 
 import com.micles92.model.User;
+import org.springframework.security.core.userdetails.UserDetails;
 
 import java.util.List;
 
@@ -16,4 +17,5 @@ public interface UserService {
 
     void delete(Long id);
 
+    User findByLogin(String login);
 }
