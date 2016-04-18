@@ -5,7 +5,8 @@
 <html>
 <head>
     <link rel="stylesheet" type="text/css" href="../css/Main.css">
-    <link rel="stylesheet" type="text/css" href="/home/lesiulol/Pulpitchartist.min.css">
+    <link rel="stylesheet" type="text/css" href="../css/chartist.min.css">
+    <script type="text/javascript" src="../js/chartist.min.js"></script>
     <title>MyApp</title>
 </head>
 <body>
@@ -34,7 +35,7 @@
 </c:otherwise>
 </c:choose>
 
-<script src="/home/lesiulol/Pulpit/chartist.min.js">
+<script>
 
     var data = {
         labels: ['Mon', 'Tue', 'Wed', 'Thu', 'Fri'], series: [
