@@ -1,4 +1,5 @@
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
+<%@ taglib prefix="form" uri="http://www.springframework.org/tags/form" %>
 <%--
   Created by IntelliJ IDEA.
   User: lesiulol
@@ -33,23 +34,23 @@
 
 <h1 align="center">Add Book: </h1>
 
-<form action="${addBookURL}" method="post" class="form-horizontal">
+<form:form commandName="book" action="${addBookURL}" method="post" class="form-horizontal">
     <div class="form-group">
         <label for="inputAutor" class="col-sm-2 control-label">Autor</label>
         <div class="col-sm-10">
-            <input type="text" name="autor" class="form-control" id="inputAutor" placeholder="Autor..."/>
+            <form:input path="autor" type="text" name="autor" class="form-control" id="inputAutor" placeholder="Autor..."/>
         </div>
     </div>
     <div class="form-group">
         <label for="inputTitle" class="col-sm-2 control-label">Title</label>
         <div class="col-sm-10">
-            <input type="text" name="title" class="form-control" id="inputTitle" placeholder="Title..."/>
+            <form:input path="title" type="text" name="title" class="form-control" id="inputTitle" placeholder="Title..."/>
         </div>
     </div>
     <div class="form-group">
         <label for="inputYear" class="col-sm-2 control-label">Year</label>
         <div class="col-sm-10">
-            <input type="text" name="year" class="form-control" id="inputYear" placeholder="Year..."/>
+            <form:input path="year" type="text" name="year" class="form-control" id="inputYear" placeholder="Year..."/>
         </div>
     </div>
 
@@ -61,7 +62,7 @@
         </div>
     </div>
 
-</form>
+</form:form>
 
 </body>
 </html>

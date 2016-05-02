@@ -20,6 +20,8 @@ public class User {
     @Column(name = "PASSWORD")
     private String password;
 
+
+
     @OneToMany(cascade = CascadeType.ALL, fetch = FetchType.LAZY, mappedBy = "user")
     private List<Rent>rents;
 

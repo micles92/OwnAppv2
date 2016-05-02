@@ -5,10 +5,7 @@ import com.micles92.service.impl.BookService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
-import org.springframework.web.bind.annotation.PathVariable;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestMethod;
-import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.bind.annotation.*;
 
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
@@ -33,23 +30,15 @@ public class BookControler {
     }
 
     @RequestMapping(value = "/add-book", method = RequestMethod.GET)
-    public String getCreateBookView(){
+    public String getCreateBookView(Model model){
+        model.addAttribute("book", new Book());
 
         return "book-create";
     }
 
     @RequestMapping(value = "/add-book", method = RequestMethod.POST)
-    public String createBook
-            (HttpServletRequest request,
-             HttpServletResponse response,
-             HttpSession session,
-             @RequestParam(value = "autor", required = true) String autor,
-             @RequestParam(value = "title", required = true) String title,
-             @RequestParam(value = "year", required = true) int year
-             ) throws SQLException {
-        //String autor = request.getParameter("autor");
+    public String createBook(@ModelAttribute("book") Book book){
 
-         Book book = new Book(year,title,autor);
 
     bookService.save(book);
         return "redirect:/books";
@@ -65,16 +54,9 @@ public class BookControler {
 
 
     @RequestMapping(value = "/edit-book", method = RequestMethod.POST)
-    public String editBook(
-            @RequestParam(value = "id", required = true) Long id,
-            @RequestParam(value = "autor", required = true) String autor,
-            @RequestParam(value = "title", required = true) String title,
-            @RequestParam(value = "year", required = true) Integer year
-    ) throws SQLException {
-        Book book = new Book(id,autor,title,year);
+    public String editBook(@ModelAttribute("book") Book book){
 
         bookService.save(book);
-
 
         return "redirect:/books";
     }

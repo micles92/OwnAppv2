@@ -17,6 +17,12 @@
     <h1>Create user</h1>
 
     <form action="${createUserURL}" method="post">
+        <input type="hidden"
+               name="${_csrf.parameterName}"
+               value="${_csrf.token}"/>
+
+
+
        login: <input type="text" name="login" placeholder="Enter login" />
         <br>
        email: <input type="text" name="email" placeholder="Email..." />
