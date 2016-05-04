@@ -1,4 +1,5 @@
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
+<%@ taglib prefix="sec" uri="http://www.springframework.org/security/tags" %>
 <%--
   Created by IntelliJ IDEA.
   User: lesiulol
@@ -12,6 +13,7 @@
 <c:url value="/delete-user" var="deleteUserURL"/>
 <html>
 <head>
+
     <title>Lista uzytkownikow</title>
     <%--<link rel="stylesheet" type="text/css" href="../css/Main.css">--%>
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.5.0/css/font-awesome.min.css">
@@ -43,18 +45,22 @@
             <td>${user.id}</td>
             <td>${user.login} </td>
             <td> ${user.email} </td>
+            <sec:authorize access="hasRole('ADMIN')">
             <td>
                 <a href= "${editUserURL}/${user.id}">Edit</a>
                 <br>
+
                 <a href="${deleteUserURL}/${user.id}">Delete</a>
             </td>
+            </sec:authorize>
         </tr>
         </c:forEach>
         </tbody>
     </table>
 
-
+<sec:authorize access="hasRole('ADMIN')">
 <a href="${createUserURL}" class="btn btn-primary">Create User</a>
+</sec:authorize>
 <i class="fa fa-stop-circle-o"></i>
 
 

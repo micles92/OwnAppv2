@@ -9,6 +9,12 @@ import java.util.List;
 @Entity
 @Table(name = "USER")
 public class User {
+
+    public enum Role{
+        USER, ADMIN
+    }
+
+
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "ID")
@@ -20,6 +26,9 @@ public class User {
     @Column(name = "PASSWORD")
     private String password;
 
+    @Enumerated(EnumType.STRING)
+    @Column(name = "ROLE")
+    private Role role;
 
 
     @OneToMany(cascade = CascadeType.ALL, fetch = FetchType.LAZY, mappedBy = "user")
@@ -75,6 +84,14 @@ public class User {
 
     public void setId(Long id) {
         this.id = id;
+    }
+
+    public Role getRole() {
+        return role;
+    }
+
+    public void setRole(Role role) {
+        this.role = role;
     }
 
     @Override

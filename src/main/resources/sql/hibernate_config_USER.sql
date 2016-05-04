@@ -1,3 +1,3 @@
-INSERT INTO `hibernate-config`.USER (ID, EMAIL, LOGIN, PASSWORD) VALUES (1, 'sad', 'lesiulol', 'wq');
-INSERT INTO `hibernate-config`.USER (ID, EMAIL, LOGIN, PASSWORD) VALUES (2, 'adsa', 'skfsdlfkdsl', '22');
-INSERT INTO `hibernate-config`.USER (ID, EMAIL, LOGIN, PASSWORD) VALUES (3, 'asbdbsadbs', 'abdsd', '2');
+INSERT INTO `hibernate-config`.USER (ID, EMAIL, LOGIN, PASSWORD, ROLE) VALUES (1, 'sad', 'lesiulol', 'wq', 'ADMIN');
+INSERT INTO `hibernate-config`.USER (ID, EMAIL, LOGIN, PASSWORD, ROLE) VALUES (2, 'adsa', 'user', 'user', 'USER');
+INSERT INTO `hibernate-config`.USER (ID, EMAIL, LOGIN, PASSWORD, ROLE) VALUES (3, 'asbdbsadbs', 'abdsd', '2', 'USER');

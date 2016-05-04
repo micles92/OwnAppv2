@@ -1,4 +1,5 @@
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
+<%@ taglib prefix="form" uri="http://www.springframework.org/tags/form" %>
 <%--
   Created by IntelliJ IDEA.
   User: lesiulol
@@ -16,23 +17,24 @@
 <body>
     <h1>Create user</h1>
 
-    <form action="${createUserURL}" method="post">
-        <input type="hidden"
-               name="${_csrf.parameterName}"
-               value="${_csrf.token}"/>
+    <form:form commandName="user"  action="${createUserURL}" method="post">
 
 
+       login: <form:input path="login" type="text" name="login" placeholder="Enter login" />
+        <br>
+       email: <form:input path="email" type="text" name="email" placeholder="Email..." />
+        <br>
+       password: <form:input path="password" type="password" name="password" placeholder="password..." />
+        <br>
+       repeat password: <input  type="password" name="repeatedpassword" placeholder="repeat password." />
 
-       login: <input type="text" name="login" placeholder="Enter login" />
-        <br>
-       email: <input type="text" name="email" placeholder="Email..." />
-        <br>
-       password: <input type="password" name="password" placeholder="password..." />
-        <br>
-       repeat password: <input type="password" name="repeatedpassword" placeholder="repeat password." />
+        <form:radiobutton path="role" value="ADMIN"/>Admin
+        <form:radiobutton path="role" value="USER"/>User
+
         <input type="submit" value="Submit" />
 
-    </form>
+
+    </form:form>
 
 </body>
 </html>
