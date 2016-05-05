@@ -1,15 +1,12 @@
 package com.micles92.controller;
 
 import com.micles92.model.Book;
-import com.micles92.service.impl.BookService;
+import com.micles92.service.BookService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
 
-import javax.servlet.http.HttpServletRequest;
-import javax.servlet.http.HttpServletResponse;
-import javax.servlet.http.HttpSession;
 import java.sql.SQLException;
 import java.util.List;
 

@@ -2,6 +2,7 @@ package com.micles92.service.impl;
 
 import com.micles92.dao.BookDao;
 import com.micles92.model.Book;
+import com.micles92.service.BookService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;

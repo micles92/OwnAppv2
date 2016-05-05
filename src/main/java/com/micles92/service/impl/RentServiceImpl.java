@@ -2,9 +2,8 @@ package com.micles92.service.impl;
 
 import com.micles92.dao.RentDao;
 import com.micles92.model.Rent;
+import com.micles92.service.RentService;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.beans.factory.annotation.Qualifier;
-import org.springframework.context.annotation.Bean;
 import org.springframework.stereotype.Service;
 
 import java.util.List;

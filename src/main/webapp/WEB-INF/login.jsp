@@ -1,31 +1,32 @@
-<!DOCTYPE html>
-<html >
+<html xmlns:th="http://www.thymeleaf.org" xmlns:tiles="http://www.thymeleaf.org">
 <head>
-    <meta charset="UTF-8">
-    <title>Bootstrap - Login Form</title>
-    <link rel="stylesheet" type="text/css" href="/home/lesiulol/IdeaProjects/OwnApp/src/main/webapp/css/login.css">
+    <title tiles:fragment="title">Login</title>
+    <link rel='stylesheet prefetch' href='http://aleksite.6te.net/css/bootstrap.css'>
+    <link rel="stylesheet" type="text/css" href="../css/style.css">
 </head>
 <body>
-    <div class="container">
-    <div class="card card-container">
-        <!-- <img class="profile-img-card" src="//lh3.googleusercontent.com/-6V8xOA6M7BA/AAAAAAAAAAI/AAAAAAAAAAA/rzlHcD0KYwo/photo.jpg?sz=120" alt="" /> -->
-        <img id="profile-img" class="profile-img-card" src="//ssl.gstatic.com/accounts/ui/avatar_2x.png" />
-        <p id="profile-name" class="profile-name-card"></p>
-        <form class="form-signin">
-            <span id="reauth-email" class="reauth-email"></span>
-            <input type="email" id="inputEmail" class="form-control" placeholder="Email address" required autofocus>
-            <input type="password" id="inputPassword" class="form-control" placeholder="Password" required>
-            <div id="remember" class="checkbox">
-                <label>
-                    <input type="checkbox" value="remember-me"> Remember me
-                </label>
+<div id="login" class="span3 well well-large offset4">
+    <form  name="f" th:action="@{/login}" method="post">
+        <input type="hidden" name="${_csrf.parameterName}" value="${_csrf.token}"/>
+
+            <legend>Account Panel</legend>
+            <div th:if="${param.error}" class="alert alert-error">
             </div>
-            <button class="btn btn-lg btn-primary btn-block btn-signin" type="submit">Sign in</button>
-        </form><!-- /form -->
-        <a href="#" class="forgot-password">
-            Forgot the password?
-        </a>
-    </div><!-- /card-container -->
-</div><!-- /container -->
+            <div th:if="${param.logout}" class="alert alert-success">
+            </div>
+            <label for="username">Username</label>
+            <input type="text" id="username" name="username" placeholder="Login"/>
+            <label for="password">Password</label>
+            <input type="password" id="password" name="password" placeholde r="Password"/>
+            <label class="checkbox" for="rememberme">
+            <input type="checkbox" /> Remember me
+            </label> <br />
+            <div class="form-actions">
+                <button type="submit" value="Login" class="btn btn-success">Log in</button> or <a class="btn" href="/create-user">Create Account</a>
+            </div>
+
+    </form>
+</div>
+<script src='http://aleksite.6te.net/js/bootstrap.js'></script>
 </body>
 </html>

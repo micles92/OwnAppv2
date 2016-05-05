@@ -1,14 +1,11 @@
 package com.micles92.controller;
 
-import com.micles92.dao.BookDao;
-import com.micles92.dao.RentDao;
-import com.micles92.dao.UserDao;
 import com.micles92.model.Book;
 import com.micles92.model.Rent;
 import com.micles92.model.User;
 import com.micles92.service.UserService;
-import com.micles92.service.impl.BookService;
-import com.micles92.service.impl.RentService;
+import com.micles92.service.BookService;
+import com.micles92.service.RentService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;

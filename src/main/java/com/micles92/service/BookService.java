@@ -1,4 +1,4 @@
-package com.micles92.service.impl;
+package com.micles92.service;
 
 import com.micles92.model.Book;
 
