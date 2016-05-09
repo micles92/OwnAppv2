@@ -16,6 +16,8 @@
     <a href="/books">Lista Ksiazek</a>
 <br>
     <a href="/rents">Lista Wypozyczen</a>
+<br>
+<a th:href="@{/logout}">Wyloguj się</a>
 
 <c:if test="${loggeduser != null}" >
     <a href="${logoutULR}">Logout</a>
