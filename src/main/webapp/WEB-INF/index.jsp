@@ -6,7 +6,7 @@
 <head>
     <link rel="stylesheet" type="text/css" href="../css/Main.css">
     <link rel="stylesheet" type="text/css" href="../css/chartist.min.css">
-    <script type="text/javascript" src="../js/chartist.min.js"></script>
+    <script type="text/javascript" src="../js/chartist.js"></script>
     <title>MyApp</title>
 </head>
 <body>
@@ -17,26 +17,9 @@
 <br>
     <a href="/rents">Lista Wypozyczen</a>
 <br>
-<a th:href="@{/logout}">Wyloguj się</a>
+<a href="<c:url value="/logout"/>">Wyloguj się</a>
 
-<c:if test="${loggeduser != null}" >
-    <a href="${logoutULR}">Logout</a>
-</c:if>
-
-<c:choose>
-<c:when test="${loggeduser == null}">
-<form action="${loginURL}" method="post">
-    <input type="text" name="login" placeholder="login" />
-    <input type="text" name="password" placeholder="password" />
-    <input type="submit" value="Submit" />
-</form>
-</c:when>
-<c:otherwise>
-    <h2>Witaj ${loggeduser.login}</h2>
-
-</c:otherwise>
-</c:choose>
-
+<div class="ct-chart ct-perfect-fourth"></div>
 <script>
 
     var data = {
@@ -57,20 +40,20 @@
 
 
 
-<div class="ct-chart ct-perfect-fourth"></div>
 
 
-<%--<c:if  test="${loggeduser == null}">--%>
-    <%--<form action="${loginURL}" method="post">--%>
-        <%--<input type="text" name="login" placeholder="login" />--%>
-        <%--<input type="text" name="password" placeholder="password" />--%>
-        <%--<input type="submit" value="Submit" />--%>
-    <%--</form>--%>
-<%--</c:if>--%>
-<%--<c:if test="${loggeduser != null}">--%>
-    <%--<h2>Witaj ${loggeduser.login}</h2>--%>
 
-<%--</c:if>--%>
+<c:if  test="${loggeduser == null}">
+    <form action="${loginURL}" method="post">
+        <input type="text" name="login" placeholder="login" />
+        <input type="text" name="password" placeholder="password" />
+        <input type="submit" value="Submit" />
+    </form>
+</c:if>
+<c:if test="${loggeduser != null}">
+    <h2>Witaj ${loggeduser.login}</h2>
+
+</c:if>
 
 
 </body>

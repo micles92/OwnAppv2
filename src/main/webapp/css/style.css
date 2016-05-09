@@ -1,6 +1,9 @@
-/* Requires: Twitter Bootstrap CSS and JS*/
+
 
 #login {
   margin-top: 10%;
   box-shadow: 0 0 18px #ccc;
+}
+body{
+  color:red;
 }
